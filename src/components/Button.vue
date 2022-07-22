@@ -1,8 +1,8 @@
 <template>
-        <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
-            <Icon class="loading" name="loading"/>
+        <button class="g-button" :class="{[`icon-${iconPosition}`]:true} " @click="$emit('click')">
+            <Icon v-if="loading" class="loading iconpark-icon" name="loading"/>
 
-            <Icon v-if="icon" :name="icon"/>
+            <Icon v-if="icon && !loading" :name="icon"/>
             <div class="content">
                 <slot></slot>
             </div>
@@ -16,11 +16,14 @@
         // props: ['icon', 'iconPosition'],
         props:{
             icon:{},
+            loading:{
+                type:Boolean,
+                default:false
+            },
             iconPosition:{
                 type:String,
                 default:'left',
                 validator(value){
-                    console.log(value);
                     return !(value !== 'left' && value !== 'right');
                 }
             }

@@ -1,12 +1,12 @@
 <template>
     <div id="app">
-        <Button>
+        <Button :loading="status1" @click="status1 = !status1">
             按钮
         </Button>
-        <Button icon="setting" icon-position="right" >
+        <Button icon="setting" icon-position="right"  :loading="status2" @click="status2 = !status2">
             按钮
         </Button>
-        <Button icon="setting" >
+        <Button icon="setting"  :loading="status3" @click="status3 = !status3">
             按钮
         </Button>
         <Icon name="download"></Icon>
@@ -18,6 +18,13 @@
 
     export default {
         name: 'App',
+        data(){
+            return {
+               status1:true,
+               status2:true,
+               status3:true,
+            }
+        },
         components: {
             Button
         }
