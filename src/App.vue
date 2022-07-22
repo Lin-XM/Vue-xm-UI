@@ -1,6 +1,14 @@
 <template>
     <div id="app">
-        <Button></Button>
+        <Button>
+            按钮
+        </Button>
+        <Button icon="setting" icon-position="right" >
+            按钮
+        </Button>
+        <Button icon="setting" >
+            按钮
+        </Button>
     </div>
 </template>
 
@@ -24,6 +32,14 @@
         box-sizing: border-box;
     }
 
+     .iconpark-icon{
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+    }
+
     :root {
         --button-height: 32px;
         --font-size: 14px;
@@ -34,8 +50,6 @@
         --border-color: #999;
         --border-color-hover: #666;
     }
-
-
 
     #app {
         margin: 20px;

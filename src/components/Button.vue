@@ -1,25 +1,26 @@
 <template>
-    <div>
-        <button class="g-button" >
-            <img class="icon" src="../assets/齿轮.svg" alt="">
-            按钮
+        <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
+            <svg v-if="icon" class="iconpark-icon">
+                <use :href="`#${icon}`"></use>
+            </svg>
+            <div class="content">
+                <slot></slot>
+            </div>
         </button>
-    </div>
 </template>
 
 <script>
     export default {
-        name: "Button"
+        props: ['icon', 'iconPosition'],
+        name: "Button",
+        data() {
+            return {}
+        }
     }
 </script>
 
 <style scoped>
-    .icon {
-        width: 1em; height: 1em;
-        vertical-align: -0.15em;
-        fill: currentColor;
-        overflow: hidden;
-    }
+
     .g-button {
         font-size: var(--font-size);
         height: var(--button-height);
@@ -27,6 +28,10 @@
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background-color: var(--button-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: center;
 
     }
 
@@ -41,4 +46,25 @@
     .g-button:focus {
         outline: none;
     }
+
+    .content {
+        order: 2;
+    }
+     .iconpark-icon {
+        order: 1;
+        margin-right: 0.3em;
+        margin-left: 0;
+    }
+
+    .icon-right >.content {
+        order: 1;
+    }
+
+    .icon-right >.iconpark-icon {
+        order: 2;
+        margin-right: 0;
+        margin-left: 0.3em;
+    }
+
+
 </style>
