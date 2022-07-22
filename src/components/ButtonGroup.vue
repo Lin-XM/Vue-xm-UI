@@ -6,7 +6,14 @@
 
 <script>
     export default {
-        name: "ButtonGroup"
+        name: "ButtonGroup",
+        mounted() {
+            for(let node of this.$el.children){
+                if(node.nodeName.toLowerCase() !== 'button'){
+                    console.warn('内部元素应该全是 Button')
+                }
+            }
+        }
     }
 </script>
 
