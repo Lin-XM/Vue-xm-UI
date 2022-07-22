@@ -4,7 +4,8 @@ import Button from './components/Button'
 import Icon from './components/Icon'
 import buttonGroup from './components/ButtonGroup'
 import chai from 'chai'
-
+import spies from 'chai-spies'
+chai.use(spies)
 Vue.config.productionTip = false
 Vue.component("Icon", Icon)
 Vue.component("Button", Button)
@@ -90,13 +91,12 @@ const expect = chai.expect
         }
     })
     button.$mount(div)
-    button.$on('click',function () {
-        console.log(1);
-        expect(1).to.eq(1)
-    })
+    let spy = chai.spy(function(){})
+    button.$on('click',spy)
     let buttonElement = button.$el
-    console.log(buttonElement);
+    console.log('测试click点击事件',buttonElement);
     buttonElement.click()
+    expect(spy).to.have.been.called()
     button.$el.remove()
     button.$destroy()
 }
