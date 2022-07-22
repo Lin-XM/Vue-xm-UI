@@ -14,6 +14,7 @@
             <Button>更多</Button>
             <Button icon="right" icon-position="right">下一页</Button>
         </button-group>
+        <div id="test"></div>
     </div>
 </template>
 
