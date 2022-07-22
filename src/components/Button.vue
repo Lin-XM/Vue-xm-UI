@@ -1,8 +1,6 @@
 <template>
         <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
-            <svg v-if="icon" class="iconpark-icon">
-                <use :href="`#${icon}`"></use>
-            </svg>
+            <Icon v-if="icon" :name="icon"/>
             <div class="content">
                 <slot></slot>
             </div>
@@ -10,8 +8,21 @@
 </template>
 
 <script>
+    import Icon from "./Icon";
     export default {
-        props: ['icon', 'iconPosition'],
+        components: {Icon},
+        // props: ['icon', 'iconPosition'],
+        props:{
+            icon:{},
+            iconPosition:{
+                type:String,
+                default:'left',
+                validator(value){
+                    console.log(value);
+                    return !(value !== 'left' && value !== 'right');
+                }
+            }
+        },
         name: "Button",
         data() {
             return {}

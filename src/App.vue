@@ -9,6 +9,7 @@
         <Button icon="setting" >
             按钮
         </Button>
+        <Icon name="download"></Icon>
     </div>
 </template>
 
