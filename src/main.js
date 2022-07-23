@@ -24,7 +24,6 @@ const expect = chai.expect
     })
     button.$mount('#test')      // 挂载对象可以为空
     let useELement = button.$el.querySelector('use')
-    console.log('单元测试 icon',useELement);
     const href = useELement.getAttribute('href')
     expect(href).to.eq('#setting')
     button.$el.remove()
@@ -40,7 +39,6 @@ const expect = chai.expect
     })
     button.$mount()
     let useELement = button.$el.querySelector('use')
-    console.log('// 测试 loading的 icon',useELement);
     const href = useELement.getAttribute('href')
     expect(href).to.eq('#loading')
     button.$el.remove()
@@ -57,7 +55,6 @@ const expect = chai.expect
     })
     button.$mount(div)
     let svg = button.$el.querySelector('svg')
-    console.log('// 测试 svg 的 order',svg);
     const {order} = window.getComputedStyle(svg)
     expect(order).to.eq('1')
     button.$el.remove()
@@ -75,7 +72,6 @@ const expect = chai.expect
     })
     button.$mount(div)
     let svg = button.$el.querySelector('svg')
-    console.log('// 测试 svg 的 order',svg);
     const {order} = window.getComputedStyle(svg)
     expect(order).to.eq('2')
     button.$el.remove()
@@ -94,7 +90,6 @@ const expect = chai.expect
     let spy = chai.spy(function(){})
     button.$on('click',spy)
     let buttonElement = button.$el
-    console.log('测试click点击事件',buttonElement);
     buttonElement.click()
     expect(spy).to.have.been.called()
     button.$el.remove()
