@@ -1,15 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Button from './components/Button'
-import Icon from './components/Icon'
-import buttonGroup from './components/ButtonGroup'
 import chai from 'chai'
 import spies from 'chai-spies'
 chai.use(spies)
 Vue.config.productionTip = false
-Vue.component("Icon", Icon)
-Vue.component("Button", Button)
-Vue.component("buttonGroup", buttonGroup)
+
 new Vue({
     render: h => h(App),
 }).$mount('#app')
@@ -22,7 +18,7 @@ const expect = chai.expect
             icon: 'setting'
         }
     })
-    button.$mount('#test')      // 挂载对象可以为空
+    button.$mount()      // 挂载对象可以为空
     let useELement = button.$el.querySelector('use')
     const href = useELement.getAttribute('href')
     expect(href).to.eq('#setting')

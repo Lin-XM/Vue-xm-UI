@@ -27,6 +27,9 @@
     "karma-mocha": "^2.0.1",
     "karma-sinon-chai": "^2.0.2",
     "mocha": "^10.0.0",
+    "node-sass": "npm:dart-sass",
+    "sass": "^1.54.0",
+    "sass-loader": "7",
     "sinon": "^14.0.0",
     "sinon-chai": "^3.7.0",
     "vue-template-compiler": "^2.6.11"

@@ -29,7 +29,7 @@
                 }
             }
         },
-        name: "Button",
+        name: "XM-Button",
         data() {
             return {}
         }
@@ -42,6 +42,7 @@
         font-size: var(--font-size);
         height: var(--button-height);
         padding: 0 1em;
+        margin: 0 4px;
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background-color: var(--button-bg);

@@ -1,24 +1,38 @@
 # xm-demo
+## 介绍
+一个在学习 Vue 过程之后，做出的一个简单 Vue UI 框架。 
+作者：我
 
-## Project setup
-```
-yarn install
-```
+## 开始使用
 
-### Compiles and hot-reloads for development
+1. 添加 CSS 样式  
+使用之前，请在 css 中开启 `border-box`。  
+```css
+*，*::before,*::after{
+    box-sizing: border-box;
+}
 ```
-yarn serve
+还需要设置一些默认颜色变量：
+```css
+:root {
+    --button-height: 32px;
+    --font-size: 14px;
+    --button-active-bg: #eee;
+    --button-bg: white;
+    --border-radius: 4px;
+    --color: #999;
+    --border-color: #999;
+    --border-color-hover: #666;
+}
 ```
+2. 安装
 
-### Compiles and minifies for production
-```
-yarn build
-```
+3. 引入
 
-### Lints and fixes files
-```
-yarn lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 文档
+
+## 变更记录
+
+
+
