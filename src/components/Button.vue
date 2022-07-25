@@ -3,9 +3,9 @@
         <Icon v-if="loading" class="loading iconpark-icon" name="loading"/>
 
         <Icon v-if="icon && !loading" :name="icon"/>
-        <div class="content">
+        <span class="content">
             <slot></slot>
-        </div>
+        </span>
     </button>
 </template>
 
@@ -42,7 +42,6 @@
         font-size: var(--font-size);
         height: var(--button-height);
         padding: 0 1em;
-        margin: 0 4px;
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background-color: var(--button-bg);

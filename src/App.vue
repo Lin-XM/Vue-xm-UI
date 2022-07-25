@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="buttonGroup">
-            <Button :loading="status1" @click="status1 = !status1">
+            <Button>
                 按钮
             </Button>
             <Button icon="setting" icon-position="right" :loading="status2" @click="status2 = !status2">
@@ -17,9 +17,15 @@
             </button-group>
         </div>
         <div class="inputGroup">
-            <myInput  />
-            <myInput inputValue="初始值" />
-            <myInput inputValue="初始值" is-disabled/>
+            <div class="box">
+                <myInput  />
+                <myInput inputValue="输入框" />
+            </div>
+            <div class="box">
+                <myInput inputValue="不可选中输入框" is-disabled/>
+                <myInput inputValue="只读输入框" is-read-only/>
+                <myInput inputValue="输入框" error-msg="用户名不能小于6个字符！"/>
+            </div>
 
         </div>
     </div>
@@ -44,7 +50,7 @@
     }
 </script>
 
-<style>
+<style lang="scss">
     * {
         margin: 0;
         padding: 0;
@@ -73,9 +79,15 @@
     }
     .buttonGroup{
         margin: 10px 0 ;
+        >Button{
+            margin: 0 4px;
+        }
     }
     .inputGroup{
         margin: 10px 0 ;
+    }
+    .box{
+        margin: 10px 0;
     }
     #app {
         margin: 20px;
