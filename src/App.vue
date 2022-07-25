@@ -19,7 +19,9 @@
         <div class="inputGroup">
             <div class="box">
                 <myInput  />
-                <myInput inputValue="输入框" />
+                <myInput inputValue="输入框1" />
+                <myInput inputValue="输入框2" />
+
             </div>
             <div class="box">
                 <myInput inputValue="不可选中输入框" is-disabled/>
@@ -46,7 +48,8 @@
         },
         components: {
             Button,buttonGroup,myInput
-        }
+        },
+
     }
 </script>
 
