@@ -30,6 +30,31 @@
             </div>
 
         </div>
+
+
+
+        <div class="gridGroup">
+            <myRow>
+                <myCol>1</myCol>
+                <myCol>2</myCol>
+            </myRow>
+            <myRow>
+                <myCol>1</myCol>
+                <myCol>2</myCol>
+                <myCol>3</myCol>
+            </myRow>
+            <myRow>
+                <myCol>1</myCol>
+                <myCol>2</myCol>
+                <myCol>3</myCol>
+                <myCol>4</myCol>
+            </myRow>
+            <myRow>
+                <myCol spanNum="2">2</myCol>
+                <myCol spanNum="22">22</myCol>
+            </myRow>
+
+        </div>
     </div>
 </template>
 
@@ -37,6 +62,8 @@
     import Button from './components/Button'
     import buttonGroup from './components/ButtonGroup'
     import myInput from "./components/Input";
+    import myCol from './components/Column'
+    import myRow from './components/Row'
     export default {
         name: 'App',
         data() {
@@ -47,7 +74,7 @@
             }
         },
         components: {
-            Button,buttonGroup,myInput
+            Button,buttonGroup,myInput,myCol,myRow
         },
 
     }
