@@ -1,5 +1,7 @@
 <template>
-    <div class="col" :class="[`col-${spanNum}`]">
+    <div class="col" :class="[spanNum && `col-${spanNum}`, offSet &&`offset-${offSet}`]"
+         :style="{paddingLeft:gutter/2+'px', paddingRight:-gutter/2+'px'}"
+    >
         <slot></slot>
     </div>
 </template>
@@ -7,11 +9,21 @@
 <script>
     export default {
         name: "XM-Column",
-        props:{
-            spanNum:{
-                type:[Number, String]
+        props: {
+            spanNum: {
+                type: [Number, String]
+            },
+            offSet: {
+                type: [Number, String]
+            },
+
+        },
+        data() {
+            return {
+                gutter: 0
             }
         }
+
     }
 </script>
 
@@ -30,8 +42,13 @@
                 width: ($n / 24) * 100%;
             }
         }
+        $class-prefix: offset-;
+        @for $n from 1 through 24 {
+            &.#{$class-prefix}#{$n} {
+                margin-left: ($n / 24) * 100%;
+            }
+        }
     }
-
 
 
 </style>

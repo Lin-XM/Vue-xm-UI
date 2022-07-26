@@ -18,9 +18,9 @@
         </div>
         <div class="inputGroup">
             <div class="box">
-                <myInput  />
-                <myInput inputValue="输入框1" />
-                <myInput inputValue="输入框2" />
+                <myInput/>
+                <myInput inputValue="输入框1"/>
+                <myInput inputValue="输入框2"/>
 
             </div>
             <div class="box">
@@ -32,26 +32,25 @@
         </div>
 
 
-
         <div class="gridGroup">
-            <myRow>
+            <myRow gutter="20">
                 <myCol>1</myCol>
                 <myCol>2</myCol>
             </myRow>
-            <myRow>
+            <myRow gutter="20">
                 <myCol>1</myCol>
                 <myCol>2</myCol>
                 <myCol>3</myCol>
             </myRow>
-            <myRow>
+            <myRow gutter="20">
                 <myCol>1</myCol>
                 <myCol>2</myCol>
                 <myCol>3</myCol>
                 <myCol>4</myCol>
             </myRow>
-            <myRow>
+            <myRow gutter="20">
                 <myCol spanNum="2">2</myCol>
-                <myCol spanNum="22">22</myCol>
+                <myCol spanNum="20" off-set="2">22</myCol>
             </myRow>
 
         </div>
@@ -64,6 +63,7 @@
     import myInput from "./components/Input";
     import myCol from './components/Column'
     import myRow from './components/Row'
+
     export default {
         name: 'App',
         data() {
@@ -74,7 +74,7 @@
             }
         },
         components: {
-            Button,buttonGroup,myInput,myCol,myRow
+            Button, buttonGroup, myInput, myCol, myRow
         },
 
     }
@@ -107,18 +107,23 @@
         --border-color: #999;
         --border-color-hover: #666;
     }
-    .buttonGroup{
-        margin: 10px 0 ;
-        >Button{
+
+    .buttonGroup {
+        margin: 10px 0;
+
+        > Button {
             margin: 0 4px;
         }
     }
-    .inputGroup{
-        margin: 10px 0 ;
-    }
-    .box{
+
+    .inputGroup {
         margin: 10px 0;
     }
+
+    .box {
+        margin: 10px 0;
+    }
+
     #app {
         margin: 20px;
     }
