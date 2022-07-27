@@ -1,7 +1,5 @@
 <template>
-    <div class="col" :class="[spanNum && `col-${spanNum}`, offSet &&`offset-${offSet}`]"
-         :style="{paddingLeft:gutter/2+'px', paddingRight:-gutter/2+'px'}"
-    >
+    <div class="col" :class="colClass" :style="colStyle">
         <slot></slot>
     </div>
 </template>
@@ -20,7 +18,20 @@
         },
         data() {
             return {
-                gutter: 0
+                gutter: 0,
+
+
+            }
+        },
+        computed: {
+            colStyle() {
+                return {
+                    paddingLeft: this.gutter / 2 + 'px',
+                    paddingRight: -this.gutter / 2 + 'px',
+                }
+            },
+            colClass(){
+                return [ this.spanNum && `col-${this.spanNum}`, this.offSet &&`offset-${this.offSet}`]
             }
         }
 
@@ -29,10 +40,7 @@
 
 <style scoped lang="scss">
     .col {
-        height: 100px;
-        background-color: grey;
         width: 50%;
-        border: 1px solid red;
 
         /*使用 scss 的 for loop */
 
