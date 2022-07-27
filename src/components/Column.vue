@@ -8,30 +8,31 @@
     export default {
         name: "XM-Column",
         props: {
+            // 每个的网格的跨度
             spanNum: {
                 type: [Number, String]
             },
-            offSet: {
+            // 网格中间间隔
+            offset: {
                 type: [Number, String]
             },
 
         },
         data() {
             return {
+                // 间隔
                 gutter: 0,
-
-
             }
         },
         computed: {
             colStyle() {
                 return {
                     paddingLeft: this.gutter / 2 + 'px',
-                    paddingRight: -this.gutter / 2 + 'px',
+                    paddingRight: this.gutter / 2 + 'px',
                 }
             },
             colClass(){
-                return [ this.spanNum && `col-${this.spanNum}`, this.offSet &&`offset-${this.offSet}`]
+                return [ this.spanNum && `col-${this.spanNum}`,this.offset &&`offset-${this.offset}`]
             }
         }
 
@@ -40,7 +41,6 @@
 
 <style scoped lang="scss">
     .col {
-        width: 50%;
 
         /*使用 scss 的 for loop */
 

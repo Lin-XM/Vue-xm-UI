@@ -26,7 +26,7 @@
         props: {
             inputValue: {
                 type: String,
-                default: 'text'
+                default: '默认值'
             },
             isDisabled: {
                 type: Boolean,

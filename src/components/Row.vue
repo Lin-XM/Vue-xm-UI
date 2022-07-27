@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="rowStyle">
+    <div class="row" :style="rowStyle" :class="rowClass">
         <slot></slot>
     </div>
 </template>
@@ -11,6 +11,14 @@
         props: {
             gutter: {
                 type: [Number, String]
+            },
+            // 网格对其方向
+            colAlign: {
+                type: String,
+                validator(value) {
+                    return ['left', 'right', 'center'].includes(value)
+                },
+                default: 'left'
             }
         },
         mounted() {
@@ -20,7 +28,10 @@
         },
         computed: {
             rowStyle() {
-                return {marginLeft: this.gutter / 2 + 'px', marginRight: -this.gutter / 2 + 'px'}
+                return {marginLeft: -this.gutter / 2 + 'px', marginRight: -this.gutter / 2 + 'px'}
+            },
+            rowClass() {
+                return [this.colAlign && `align-${this.colAlign}`]
             }
         }
     }
@@ -29,5 +40,14 @@
 <style scoped lang="scss">
     .row {
         display: flex;
+        .align-right{
+            justify-content: flex-end;
+        }
+        .align-left{
+            justify-content: flex-start;
+        }
+        .align-right{
+            justify-content: center;
+        }
     }
 </style>

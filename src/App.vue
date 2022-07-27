@@ -18,40 +18,53 @@
         </div>
         <div class="inputGroup">
             <div class="box">
-                <myInput/>
-                <myInput inputValue="输入框1"/>
-                <myInput inputValue="输入框2"/>
+                <span>普通输入框</span>
+                <div>
+                    <myInput/>
+                    <myInput inputValue="输入框1"/>
+                    <myInput inputValue="输入框2"/>
+                </div>
+
 
             </div>
             <div class="box">
-                <myInput inputValue="不可选中输入框" is-disabled/>
-                <myInput inputValue="只读输入框" is-read-only/>
-                <myInput inputValue="输入框" error-msg="用户名不能小于6个字符！"/>
+                <span>特殊输入框，参数[isDisabled],[isReadOnly],[errorMsg]</span>
+                <div>
+                    <myInput inputValue="不可选中输入框" is-disabled/>
+                    <myInput inputValue="只读输入框" is-read-only/>
+                    <myInput inputValue="输入框" error-msg="用户名不能小于6个字符！"/>
+                </div>
+
             </div>
 
         </div>
 
 
         <div class="gridGroup">
-            <myRow gutter="20">
-                <myCol>1</myCol>
-                <myCol>2</myCol>
-            </myRow>
-            <myRow gutter="20">
-                <myCol>1</myCol>
-                <myCol>2</myCol>
-                <myCol>3</myCol>
-            </myRow>
-            <myRow gutter="20">
-                <myCol>1</myCol>
-                <myCol>2</myCol>
-                <myCol>3</myCol>
-                <myCol>4</myCol>
-            </myRow>
-            <myRow gutter="20">
-                <myCol spanNum="2">2</myCol>
-                <myCol spanNum="20" off-set="2">22</myCol>
-            </myRow>
+            <div>
+                <span>普通网格</span>
+                <div>
+                    <myRow  gutter="20">
+                        <myCol class="demo-box" >网格1</myCol>
+                        <myCol class="demo-box" >网格2</myCol>
+                    </myRow>
+                </div>
+
+            </div>
+            <div>
+                <span>特殊网格，row参数[gutter],[align]</span>
+                <span>特殊网格，col参数[gutter],[spanNum],[offset]</span>
+                <div>
+                    <myRow  gutter="20" col-align="right">
+                        <myCol class="demo-box" span-num="4 " >网格1</myCol>
+                        <myCol class="demo-box" span-num="4" offset="2">网格2</myCol>
+                        <myCol class="demo-box" span-num="14">网格3</myCol>
+
+                    </myRow>
+                </div>
+
+            </div>
+
 
         </div>
     </div>
@@ -119,7 +132,14 @@
     .inputGroup {
         margin: 10px 0;
     }
-
+    .gridGroup{
+        .row{
+            .demo-box{
+                border: 1px solid #333333;
+                background: #999;
+            }
+        }
+    }
     .box {
         margin: 10px 0;
     }
