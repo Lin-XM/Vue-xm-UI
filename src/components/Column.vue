@@ -61,14 +61,32 @@
             },
             colClass() {
                 let {spanNum, offset, ipad, narrow, normal, wide} = this
+                let {createClasses} = this
+
                 return [
-                    spanNum && `col-${spanNum}`,
-                    offset && `offset-${offset}`,
-                    ...(ipad ? [`col-ipad-${ipad.spanNum}`] : []),
-                    ...(narrow ? [`col-narrow-${narrow.spanNum}`] : []),
-                    ...(normal ? [`col-normal-${normal.spanNum}`] : []),
-                    ...(wide ? [`col-wide-${wide.spanNum}`] : []),
+                    ...createClasses({spanNum,offset}),
+                    ...createClasses(ipad,'ipad-'),
+                    ...createClasses(narrow,'narrow-'),
+                    ...createClasses(normal,'normal-'),
+                    ...createClasses(wide,'wide-'),
+
+
                 ]
+            }
+        },
+        methods:{
+            createClasses(obj,str=''){
+                // str = ipad-  || narrow- || normal-
+                if(!obj) return []
+                let array = []
+                if(obj.spanNum){
+                    array.push(`col-${str}${obj.spanNum}`)
+                }
+                if(obj.offset){
+                    array.push(`col-${str}${obj.offset}`)
+                }
+                return array
+
             }
         }
 

@@ -1,15 +1,18 @@
 <template>
     <div id="app">
-        <div class="buttonGroup">
-            <Button>
-                按钮
-            </Button>
-            <Button icon="setting" icon-position="right" :loading="status2" @click="status2 = !status2">
-                按钮
-            </Button>
-            <Button icon="setting" :loading="status3" @click="status3 = !status3">
-                按钮
-            </Button>
+        <div class="buttonClasses">
+            <div>
+                <Button>
+                    普通按钮
+                </Button>
+                <Button icon="setting" icon-position="right" :loading="status2" @click="status2 = !status2">
+                    功能按钮
+                </Button>
+                <Button icon="setting" :loading="status3" @click="status3 = !status3">
+                    功能按钮
+                </Button>
+            </div>
+
             <button-group>
                 <Button icon="left">上一页</Button>
                 <Button>更多</Button>
@@ -45,8 +48,15 @@
                 <span>普通网格</span>
                 <div>
                     <myRow gutter="20">
-                        <myCol class="demo-box">网格1</myCol>
-                        <myCol class="demo-box">网格2</myCol>
+                        <myCol  span-num="6">
+                            <div class="demo">
+                                网格1
+                            </div></myCol>
+                        <myCol  span-num="18">
+                            <div class="demo">
+                                网格2
+                            </div>
+                        </myCol>
                     </myRow>
                 </div>
 
@@ -55,20 +65,24 @@
                 <span>特殊网格，row参数[gutter],[align]</span>
                 <span>特殊网格，col参数[gutter],[spanNum],[offset]</span>
                 <div>
-                    <myRow gutter="20" col-align="right">
-                        <myCol class="demo-box" span-num="12"
-                               :ipad="{spanNum:8,offset:0}"
-                               :narrow="{spanNum:4,offset:0}"
-                               :normal="{spanNum:2,offset:0}"
-                               :wide="{spanNum:1,offset:0}"
-                        >网格1
+                    <myRow >
+                        <myCol span-num="24" :ipad="{spanNum:12}" :narrow="{spanNum:8}">
+                            <div class="demo">网格1</div>
                         </myCol>
-                        <myCol class="demo-box" span-num="12" offset="0"
-                               :ipad="{spanNum:16,offset:0}"
-                               :narrow="{spanNum:20,offset:0}"
-                               :normal="{spanNum:22,offset:0}"
-                               :wide="{spanNum:23,offset:0}"
-                        >网格2
+                        <myCol span-num="24" :ipad="{spanNum:12}" :narrow="{spanNum:8}">
+                            <div class="demo">网格2</div>
+                        </myCol>
+                        <myCol span-num="24" :ipad="{spanNum:12}" :narrow="{spanNum:8}">
+                            <div class="demo">网格3</div>
+                        </myCol>
+                        <myCol span-num="24" :ipad="{spanNum:12}" :narrow="{spanNum:8}">
+                            <div class="demo">网格4</div>
+                        </myCol>
+                        <myCol span-num="24" :ipad="{spanNum:12}" :narrow="{spanNum:8}">
+                            <div class="demo">网格5</div>
+                        </myCol>
+                        <myCol span-num="24" :ipad="{spanNum:12}" :narrow="{spanNum:8}">
+                            <div class="demo">网格6</div>
                         </myCol>
                     </myRow>
                 </div>
@@ -131,11 +145,14 @@
         --border-color-hover: #666;
     }
 
-    .buttonGroup {
+    .buttonClasses {
         margin: 10px 0;
 
-        > Button {
-            margin: 0 4px;
+        >div:first-child {
+            margin: 10px 0 ;
+            >Button{
+                margin: 0 4px;
+            }
         }
     }
 
@@ -145,9 +162,10 @@
 
     .gridGroup {
         .row {
-            .demo-box {
+            .demo {
                 border: 1px solid #333333;
                 background: #999;
+                height: 40px;
             }
         }
     }

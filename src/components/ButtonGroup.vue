@@ -21,6 +21,7 @@
     .button-group{
         display: inline-flex;
         vertical-align: middle;
+        margin:  0 4px;
     }
     .button-group >.g-button{
         border-radius: 0;
