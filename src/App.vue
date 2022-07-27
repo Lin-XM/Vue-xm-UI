@@ -44,9 +44,9 @@
             <div>
                 <span>普通网格</span>
                 <div>
-                    <myRow  gutter="20">
-                        <myCol class="demo-box" >网格1</myCol>
-                        <myCol class="demo-box" >网格2</myCol>
+                    <myRow gutter="20">
+                        <myCol class="demo-box">网格1</myCol>
+                        <myCol class="demo-box">网格2</myCol>
                     </myRow>
                 </div>
 
@@ -55,11 +55,21 @@
                 <span>特殊网格，row参数[gutter],[align]</span>
                 <span>特殊网格，col参数[gutter],[spanNum],[offset]</span>
                 <div>
-                    <myRow  gutter="20" col-align="right">
-                        <myCol class="demo-box" span-num="4 " >网格1</myCol>
-                        <myCol class="demo-box" span-num="4" offset="2">网格2</myCol>
-                        <myCol class="demo-box" span-num="14">网格3</myCol>
-
+                    <myRow gutter="20" col-align="right">
+                        <myCol class="demo-box" span-num="12"
+                               :ipad="{spanNum:8,offset:0}"
+                               :narrow="{spanNum:4,offset:0}"
+                               :normal="{spanNum:2,offset:0}"
+                               :wide="{spanNum:1,offset:0}"
+                        >网格1
+                        </myCol>
+                        <myCol class="demo-box" span-num="12" offset="0"
+                               :ipad="{spanNum:16,offset:0}"
+                               :narrow="{spanNum:20,offset:0}"
+                               :normal="{spanNum:22,offset:0}"
+                               :wide="{spanNum:23,offset:0}"
+                        >网格2
+                        </myCol>
                     </myRow>
                 </div>
 
@@ -132,14 +142,16 @@
     .inputGroup {
         margin: 10px 0;
     }
-    .gridGroup{
-        .row{
-            .demo-box{
+
+    .gridGroup {
+        .row {
+            .demo-box {
                 border: 1px solid #333333;
                 background: #999;
             }
         }
     }
+
     .box {
         margin: 10px 0;
     }

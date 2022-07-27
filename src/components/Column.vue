@@ -5,6 +5,16 @@
 </template>
 
 <script>
+    let validator = (value) => {
+        let keys = Object.keys(value)
+        let valid = true
+        keys.forEach(key => {
+            if (!['spanNum', 'offset'].includes(key)) {
+                valid = false
+            }
+        })
+        return valid
+    }
     export default {
         name: "XM-Column",
         props: {
@@ -16,6 +26,24 @@
             offset: {
                 type: [Number, String]
             },
+            // 自适应判断
+            ipad: {
+                type: Object,
+                validator: validator
+            },
+            narrow: {
+                type: Object,
+                validator: validator
+            },
+            normal: {
+                type: Object,
+                validator: validator
+            },
+            wide: {
+                type: Object,
+                validator: validator
+            },
+
 
         },
         data() {
@@ -31,8 +59,16 @@
                     paddingRight: this.gutter / 2 + 'px',
                 }
             },
-            colClass(){
-                return [ this.spanNum && `col-${this.spanNum}`,this.offset &&`offset-${this.offset}`]
+            colClass() {
+                let {spanNum, offset, ipad, narrow, normal, wide} = this
+                return [
+                    spanNum && `col-${spanNum}`,
+                    offset && `offset-${offset}`,
+                    ...(ipad ? [`col-ipad-${ipad.spanNum}`] : []),
+                    ...(narrow ? [`col-narrow-${narrow.spanNum}`] : []),
+                    ...(normal ? [`col-normal-${normal.spanNum}`] : []),
+                    ...(wide ? [`col-wide-${wide.spanNum}`] : []),
+                ]
             }
         }
 
@@ -41,9 +77,7 @@
 
 <style scoped lang="scss">
     .col {
-
         /*使用 scss 的 for loop */
-
         $class-prefix: col-;
         @for $n from 1 through 24 {
             &.#{$class-prefix}#{$n} {
@@ -54,6 +88,68 @@
         @for $n from 1 through 24 {
             &.#{$class-prefix}#{$n} {
                 margin-left: ($n / 24) * 100%;
+            }
+        }
+        /*手机端*/
+
+        /* iPad */
+        @media (min-width: 577px) and (max-width: 768px) {
+            $class-prefix: col-ipad-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    width: ($n / 24) * 100%;
+                }
+            }
+            $class-prefix: offset-ipad-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    margin-left: ($n / 24) * 100%;
+                }
+            }
+        }
+        /* narrow pc  */
+        @media (min-width: 769px) and (max-width: 992px) {
+            $class-prefix: col-narrow-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    width: ($n / 24) * 100%;
+                }
+            }
+            $class-prefix: offset-narrow-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    margin-left: ($n / 24) * 100%;
+                }
+            }
+        }
+        /* normal pc  */
+        @media (min-width: 993px) and (max-width: 1200px) {
+            $class-prefix: col-normal-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    width: ($n / 24) * 100%;
+                }
+            }
+            $class-prefix: offset-normal-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    margin-left: ($n / 24) * 100%;
+                }
+            }
+        }
+        /* wide pc  */
+        @media (min-width: 1201px) {
+            $class-prefix: col-wide-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    width: ($n / 24) * 100%;
+                }
+            }
+            $class-prefix: offset-wide-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    margin-left: ($n / 24) * 100%;
+                }
             }
         }
     }
