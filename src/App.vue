@@ -93,11 +93,7 @@
 
         </div>
         <div class="LayoutGroup">
-            <Layout>
-                <Header class="demo">header</Header>
-                <XMContent class="demo">content</XMContent>
-                <Footer class="demo">footer</Footer>
-            </Layout>
+
             <Layout>
                 <Header class="demo">header</Header>
                 <Layout>
@@ -106,14 +102,7 @@
                 </Layout>
                 <Footer class="demo">footer</Footer>
             </Layout>
-            <Layout>
-                <Sider class="demo">siderbar</Sider>
-                <Layout>
-                    <Header class="demo">header</Header>
-                    <XMContent class="demo">content</XMContent>
-                    <Footer class="demo">footer</Footer>
-                </Layout>
-            </Layout>
+
         </div>
     </div>
 </template>
@@ -202,9 +191,21 @@
     }
     .LayoutGroup{
         .layout{
-            .demo{
-                border:1px solid #666666;
-                min-height: 40px;
+            .header{
+                background-color: #f6d7a9;
+            }
+            .sider{
+                background-color: #999999;
+                width: 100px;
+                min-height: 80vh;
+            }
+            .content{
+                background-color: orange;
+                min-height: 80vh;
+            }
+            .footer{
+                background-color: #cccccc;
+                min-height: 10vh;
             }
         }
 

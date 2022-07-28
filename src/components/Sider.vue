@@ -1,15 +1,29 @@
 <template>
-    <div class="sider">
-        <slot></slot>
-    </div>
+        <div class="sider" v-if="visible">
+            <button @click="visible=false">close</button>
+            <slot></slot>
+        </div>
 </template>
 
 <script>
     export default {
-        name: "SiderBar"
+        name: "SiderBar",
+        data() {
+            return {
+                visible: true
+            }
+        }
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    .sider {
+        position: relative;
+        > button {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+        }
+    }
 
 </style>
