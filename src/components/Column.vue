@@ -61,7 +61,7 @@
             },
             colClass() {
                 let {spanNum, offset, ipad, narrow, normal, wide} = this
-                let {createClasses} = this
+                let createClasses = this.createClasses
 
                 return [
                     ...createClasses({spanNum,offset}),
@@ -94,6 +94,7 @@
 </script>
 
 <style scoped lang="scss">
+    @use "sass:math";
     .col {
         /*使用 scss 的 for loop */
         $class-prefix: col-;

@@ -19,6 +19,7 @@
                 <Button icon="right" icon-position="right">下一页</Button>
             </button-group>
         </div>
+
         <div class="inputGroup">
             <div class="box">
                 <span>普通输入框</span>
@@ -42,17 +43,17 @@
 
         </div>
 
-
         <div class="gridGroup">
             <div>
                 <span>普通网格</span>
                 <div>
                     <myRow gutter="20">
-                        <myCol  span-num="6">
+                        <myCol span-num="6">
                             <div class="demo">
                                 网格1
-                            </div></myCol>
-                        <myCol  span-num="18">
+                            </div>
+                        </myCol>
+                        <myCol span-num="18">
                             <div class="demo">
                                 网格2
                             </div>
@@ -65,7 +66,7 @@
                 <span>特殊网格，row参数[gutter],[align]</span>
                 <span>特殊网格，col参数[gutter],[spanNum],[offset]</span>
                 <div>
-                    <myRow >
+                    <myRow>
                         <myCol span-num="24" :ipad="{spanNum:12}" :narrow="{spanNum:8}">
                             <div class="demo">网格1</div>
                         </myCol>
@@ -91,6 +92,29 @@
 
 
         </div>
+        <div class="LayoutGroup">
+            <Layout>
+                <Header class="demo">header</Header>
+                <XMContent class="demo">content</XMContent>
+                <Footer class="demo">footer</Footer>
+            </Layout>
+            <Layout>
+                <Header class="demo">header</Header>
+                <Layout>
+                    <Sider class="demo">siderbar</Sider>
+                    <XMContent class="demo">content</XMContent>
+                </Layout>
+                <Footer class="demo">footer</Footer>
+            </Layout>
+            <Layout>
+                <Sider class="demo">siderbar</Sider>
+                <Layout>
+                    <Header class="demo">header</Header>
+                    <XMContent class="demo">content</XMContent>
+                    <Footer class="demo">footer</Footer>
+                </Layout>
+            </Layout>
+        </div>
     </div>
 </template>
 
@@ -100,6 +124,11 @@
     import myInput from "./components/Input";
     import myCol from './components/Column'
     import myRow from './components/Row'
+    import Layout from "./components/Layout";
+    import Header from "./components/Header";
+    import Sider from "./components/Sider";
+    import XMContent from "./components/Content";
+    import Footer from "./components/Footer";
 
     export default {
         name: 'App',
@@ -111,7 +140,8 @@
             }
         },
         components: {
-            Button, buttonGroup, myInput, myCol, myRow
+            Button, buttonGroup, myInput, myCol, myRow, Layout, Header
+            , Sider, XMContent, Footer
         },
 
     }
@@ -148,9 +178,10 @@
     .buttonClasses {
         margin: 10px 0;
 
-        >div:first-child {
-            margin: 10px 0 ;
-            >Button{
+        > div:first-child {
+            margin: 10px 0;
+
+            > Button {
                 margin: 0 4px;
             }
         }
@@ -168,6 +199,15 @@
                 height: 40px;
             }
         }
+    }
+    .LayoutGroup{
+        .layout{
+            .demo{
+                border:1px solid #666666;
+                min-height: 40px;
+            }
+        }
+
     }
 
     .box {
