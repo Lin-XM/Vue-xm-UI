@@ -140,13 +140,8 @@
             , Sider, XMContent, Footer,
         },
         created() {
-            this.$toast('我是信息', {
-                closeButton: {
-                    text: '知道了',
-                    callback() {
-                        console.log('用户知道了');
-                    }
-                }
+            this.$toast('我是信息我是信息我是信我是信息我是信息我是信息我是信息我是信息我是信息我是信息', {
+                enableHtml: false
             })
         },
 
