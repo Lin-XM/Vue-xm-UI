@@ -62,6 +62,7 @@
             },
             close() {
                 this.$el.remove()
+                this.$emit('close')
                 this.$destroy()
             },
             onClickClose() {
@@ -82,6 +83,14 @@
 </script>
 
 <style scoped lang="scss">
+    @keyframes fade-in {
+        0%{opacity: 0;}
+        100%{opacity: 1;}
+    }
+    @keyframes fade-in-bottom {
+        0%{opacity: 0; transform:translateY(100%)}
+        100%{opacity: 1;transform:translateY(0)}
+    }
     .toast {
         position: fixed;
         left: 50%;
@@ -116,10 +125,13 @@
         &.position-bottom{
             bottom: 0;
             transform:translateX(-50%);
+            animation: fade-in-bottom 1s linear ;
+
         }
         &.position-middle{
             top: 50%;
             transform:translate(-50%, -50%);
+            animation: fade-in 1s linear ;
 
         }
 
