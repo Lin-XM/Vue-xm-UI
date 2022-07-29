@@ -140,7 +140,14 @@
             , Sider, XMContent, Footer,
         },
         created() {
-            this.$toast('我是信息')
+            this.$toast('我是信息', {
+                closeButton: {
+                    text: '知道了',
+                    callback() {
+                        console.log('用户知道了');
+                    }
+                }
+            })
         },
 
 
@@ -200,21 +207,25 @@
             }
         }
     }
-    .LayoutGroup{
-        .layout{
-            .header{
+
+    .LayoutGroup {
+        .layout {
+            .header {
                 background-color: #f6d7a9;
             }
-            .sider{
+
+            .sider {
                 background-color: #999999;
                 width: 100px;
                 min-height: 80vh;
             }
-            .content{
+
+            .content {
                 background-color: orange;
                 min-height: 80vh;
             }
-            .footer{
+
+            .footer {
                 background-color: #cccccc;
                 min-height: 10vh;
             }
