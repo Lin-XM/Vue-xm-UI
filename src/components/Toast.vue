@@ -1,11 +1,13 @@
 <template>
-    <div class="toast" ref="toast" :class="toastClasses">
-        <div class="message">
-            <slot v-if="!enableHtml"></slot>
-            <div v-else v-html="$slots.default[0]"></div>
+    <div class="inner" :class="toastClasses">
+        <div class="toast" ref="toast" >
+            <div class="message">
+                <slot v-if="!enableHtml"></slot>
+                <div v-else v-html="$slots.default[0]"></div>
+            </div>
+            <div class="line" ref="line"></div>
+            <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
         </div>
-        <div class="line" ref="line"></div>
-        <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
 </template>
 
@@ -33,11 +35,11 @@
                 type: Boolean,
                 default: false
             },
-            position:{
-                type:String,
-                default:'top',
-                validator(value){
-                    return  ['top','bottom','middle'].indexOf(value) >=0
+            position: {
+                type: String,
+                default: 'top',
+                validator(value) {
+                    return ['top', 'bottom', 'middle'].indexOf(value) >= 0
                 }
             }
         },
@@ -62,7 +64,7 @@
             },
             close() {
                 this.$el.remove()
-                this.$emit('close')
+                this.$bus.$emit('close')
                 this.$destroy()
             },
             onClickClose() {
@@ -74,26 +76,19 @@
             },
 
         },
-        computed:{
-            toastClasses(){
-                return  {[`position-${this.position}`]:true}
+        computed: {
+            toastClasses() {
+                return {[`position-${this.position}`]: true}
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
-    @keyframes fade-in {
-        0%{opacity: 0;}
-        100%{opacity: 1;}
-    }
-    @keyframes fade-in-bottom {
-        0%{opacity: 0; transform:translateY(100%)}
-        100%{opacity: 1;transform:translateY(0)}
-    }
+
+
     .toast {
-        position: fixed;
-        left: 50%;
+
         font-size: 14px;
         color: white;
         padding: 0 16px;
@@ -105,9 +100,10 @@
         border-radius: 4px;
         box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
 
-        .message{
-            padding: 8px 0 ;
+        .message {
+            padding: 8px 0;
         }
+
         .close {
             flex-shrink: 0;
         }
@@ -117,23 +113,83 @@
             border: 1px solid #999999;
             margin: 0 16px;
         }
-        &.position-top{
+
+        &.position-top {
             top: 0;
-            transform:translateX(-50%);
 
         }
-        &.position-bottom{
+
+        &.position-bottom {
             bottom: 0;
-            transform:translateX(-50%);
-            animation: fade-in-bottom 1s linear ;
 
         }
-        &.position-middle{
+
+        &.position-middle {
             top: 50%;
-            transform:translate(-50%, -50%);
-            animation: fade-in 1s linear ;
 
         }
 
     }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-in-bottom {
+        0% {
+            opacity: 0;
+            transform: translateY(100%)
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
+    @keyframes fade-in-top {
+        0% {
+            opacity: 0;
+            transform: translateY(-100%)
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0%)
+        }
+    }
+    .inner {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        &.position-bottom {
+            bottom: 0;
+            .toast{
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                animation: fade-in-bottom 1s linear;
+
+            }
+        }
+
+        &.position-middle {
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            .toast{
+                animation: fade-in 1s linear;
+
+            }
+        }
+         &.position-top {
+             top:0;
+             .toast{
+                 animation: fade-in-top 1s linear;
+                 border-top-left-radius: 0;
+                 border-top-right-radius: 0 ;
+             }
+        }
+    }
+
 </style>

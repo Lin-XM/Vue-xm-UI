@@ -8,7 +8,14 @@ Vue.config.productionTip = false
 
 new Vue({
     render: h => h(App),
+    beforeCreate() {
+        Vue.prototype.$bus = this
+    }
 }).$mount('#app')
+
+
+
+
 // 单元测试 icon,loading,iconPosition, @click 事件
 const expect = chai.expect
 {

@@ -158,7 +158,7 @@
                     enableHtml: false,
                     autoClose: false,
                     execAutoClose: 3,
-                    position: 'middle'
+                    position: 'top',
                 })
             }
         }
