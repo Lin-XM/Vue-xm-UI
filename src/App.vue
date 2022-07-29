@@ -1,5 +1,8 @@
 <template>
     <div id="app">
+        <div class="toastGroup">
+        </div>
+
         <div class="buttonClasses">
             <div>
                 <Button>
@@ -93,7 +96,6 @@
 
         </div>
         <div class="LayoutGroup">
-
             <Layout>
                 <Header class="demo">header</Header>
                 <Layout>
@@ -102,12 +104,14 @@
                 </Layout>
                 <Footer class="demo">footer</Footer>
             </Layout>
-
         </div>
+
+
     </div>
 </template>
 
 <script>
+    import Vue from 'vue'
     import Button from './components/Button'
     import buttonGroup from './components/ButtonGroup'
     import myInput from "./components/Input";
@@ -118,7 +122,10 @@
     import Sider from "./components/Sider";
     import XMContent from "./components/Content";
     import Footer from "./components/Footer";
+    // import Toast from "./components/Toast";
+    import plugin from "./plugins/plugin";
 
+    Vue.use(plugin)
     export default {
         name: 'App',
         data() {
@@ -130,8 +137,12 @@
         },
         components: {
             Button, buttonGroup, myInput, myCol, myRow, Layout, Header
-            , Sider, XMContent, Footer
+            , Sider, XMContent, Footer,
         },
+        created() {
+            this.$toast('我是信息')
+        },
+
 
     }
 </script>
