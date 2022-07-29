@@ -9,7 +9,7 @@
         let keys = Object.keys(value)
         let valid = true
         keys.forEach(key => {
-            if (!['spanNum', 'offset'].includes(key)) {
+            if (['spanNum', 'offset'].indexOf(key)< 0) {
                 valid = false
             }
         })

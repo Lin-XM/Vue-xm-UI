@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <div class="toastGroup">
+            参数：输入的文本[message]，html标签功能[enableHtml],是否自动关闭[autoClose], 关闭时间延迟[execAutoClose],出现位置[position]
         </div>
 
         <div class="buttonClasses">
@@ -140,8 +141,17 @@
             , Sider, XMContent, Footer,
         },
         created() {
-            this.$toast('我是信息我是信息我是信我是信息我是信息我是信息我是信息我是信息我是信息我是信息', {
-                enableHtml: false
+            this.$toast('我是信息', {
+                closeButton:{
+                    text:'充值',
+                    callback(){
+                        console.log('充钱了');
+                    }
+                },
+                enableHtml: false,
+                autoClose:false,
+                execAutoClose:3,
+                position: 'bottom'
             })
         },
 

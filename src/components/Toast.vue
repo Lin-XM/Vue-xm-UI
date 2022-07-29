@@ -1,5 +1,5 @@
 <template>
-    <div class="toast" ref="toast">
+    <div class="toast" ref="toast" :class="toastClasses">
         <div class="message">
             <slot v-if="!enableHtml"></slot>
             <div v-else v-html="$slots.default[0]"></div>
@@ -19,7 +19,7 @@
             },
             autoDelay: {
                 type: Number,
-                default: 5000
+                default: 1
             },
             closeButton: {
                 type: Object,
@@ -32,6 +32,13 @@
             enableHtml: {
                 type: Boolean,
                 default: false
+            },
+            position:{
+                type:String,
+                default:'top',
+                validator(value){
+                    return  ['top','bottom','middle'].indexOf(value) >=0
+                }
             }
         },
         mounted() {
@@ -63,6 +70,12 @@
                     this.closeButton.callback()
 
                 }
+            },
+
+        },
+        computed:{
+            toastClasses(){
+                return  {[`position-${this.position}`]:true}
             }
         }
     }
@@ -71,9 +84,7 @@
 <style scoped lang="scss">
     .toast {
         position: fixed;
-        top: 0;
         left: 50%;
-        transform:translateX(-50%);
         font-size: 14px;
         color: white;
         padding: 0 16px;
@@ -81,7 +92,6 @@
         min-height: 40px;
         display: flex;
         align-items: center;
-        justify-content: center;
         background-color: rgba(0, 0, 0, 0.75);
         border-radius: 4px;
         box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
@@ -98,5 +108,20 @@
             border: 1px solid #999999;
             margin: 0 16px;
         }
+        &.position-top{
+            top: 0;
+            transform:translateX(-50%);
+
+        }
+        &.position-bottom{
+            bottom: 0;
+            transform:translateX(-50%);
+        }
+        &.position-middle{
+            top: 50%;
+            transform:translate(-50%, -50%);
+
+        }
+
     }
 </style>
