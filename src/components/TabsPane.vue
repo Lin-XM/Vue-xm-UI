@@ -6,7 +6,10 @@
 
 <script>
     export default {
-        name: "TabsPane"
+        name: "TabsPane",
+        created() {
+
+        }
     }
 </script>
 

@@ -5,8 +5,13 @@
 </template>
 
 <script>
+
     export default {
         name: "XM-Tabs",
+        data() {
+            return {
+            }
+        },
         props: {
             selected: {
                 type: String,
@@ -21,8 +26,8 @@
 
             }
         },
+
         created() {
-            // this.$emit('updated:selected', 'xx')
         }
     }
 </script>

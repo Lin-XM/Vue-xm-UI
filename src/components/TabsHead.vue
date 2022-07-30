@@ -7,7 +7,11 @@
 
 <script>
     export default {
-        name: "TabsHeader"
+        name: "TabsHeader",
+        created() {
+            this.$emit('update:selected', 'this.$emit')
+
+        }
     }
 </script>
 

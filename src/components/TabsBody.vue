@@ -6,7 +6,10 @@
 
 <script>
     export default {
-        name: "TabsBody"
+        name: "TabsBody",
+        created() {
+
+        }
     }
 </script>
 

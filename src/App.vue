@@ -1,9 +1,9 @@
 <template>
     <div id="app">
         <div class="tabsGroup">
-            <XMTabs :selected.sync="selectedTab" direction="horizontal" >
+            <XMTabs :selected.sync="selectedTab" @update:selected="yyyy" direction="horizontal" >
 <!--                <TabsHead selected="selectedTab" @update:selected="selectedTab = $event">-->
-                <TabsHead>
+                <TabsHead >
                     <template slot="actions">
                         <button>设置</button>
                     </template>
@@ -194,6 +194,9 @@
                     execAutoClose: 3,
                     position: 'top',
                 })
+            },
+            yyyy(){
+                console.log('yyy');
             }
         }
 
