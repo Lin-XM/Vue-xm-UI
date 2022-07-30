@@ -1,6 +1,6 @@
 <template>
     <div class="inner" :class="toastClasses">
-        <div class="toast" ref="toast" >
+        <div class="toast" ref="toast">
             <div class="message">
                 <slot v-if="!enableHtml"></slot>
                 <div v-else v-html="$slots.default[0]"></div>
@@ -150,6 +150,7 @@
             transform: translateY(0)
         }
     }
+
     @keyframes fade-in-top {
         0% {
             opacity: 0;
@@ -160,13 +161,16 @@
             transform: translateY(0%)
         }
     }
+
     .inner {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
+
         &.position-bottom {
             bottom: 0;
-            .toast{
+
+            .toast {
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
                 animation: fade-in-bottom 1s linear;
@@ -177,18 +181,21 @@
         &.position-middle {
             top: 50%;
             transform: translateX(-50%) translateY(-50%);
-            .toast{
+
+            .toast {
                 animation: fade-in 1s linear;
 
             }
         }
-         &.position-top {
-             top:0;
-             .toast{
-                 animation: fade-in-top 1s linear;
-                 border-top-left-radius: 0;
-                 border-top-right-radius: 0 ;
-             }
+
+        &.position-top {
+            top: 0;
+
+            .toast {
+                animation: fade-in-top 1s linear;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
         }
     }
 

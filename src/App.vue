@@ -1,5 +1,28 @@
 <template>
     <div id="app">
+        <div class="tabsGroup">
+            <XMTabs :selected.sync="selectedTab" direction="horizontal" >
+<!--                <TabsHead selected="selectedTab" @update:selected="selectedTab = $event">-->
+                <TabsHead>
+                    <template slot="actions">
+                        <button>设置</button>
+                    </template>
+                    <TabsItem :disbaled="true" name="woman">
+                        <Icon name="setting"></Icon>美女</TabsItem>
+                    <TabsItem name="finance">财经</TabsItem>
+                    <TabsItem name="sports">体育</TabsItem>
+                    <TabsItem name="movies">影视</TabsItem>
+                </TabsHead>
+                <TabsBody>
+                    <TabsPane name="woman">美女相关资讯</TabsPane>
+                    <TabsPane name="finance">财经相关资讯</TabsPane>
+                    <TabsPane name="sports">体育相关资讯</TabsPane>
+                    <TabsPane name="movies">影视相关资讯</TabsPane>
+                </TabsBody>
+
+            </XMTabs>
+        </div>
+
         <div class="toastGroup">
             <button @click="showToast">点击展示toast</button>
             <div>
@@ -117,6 +140,7 @@
 <script>
     import Vue from 'vue'
     import Button from './components/Button'
+    import Icon from "./components/Icon";
     import buttonGroup from './components/ButtonGroup'
     import myInput from "./components/Input";
     import myCol from './components/Column'
@@ -128,6 +152,11 @@
     import Footer from "./components/Footer";
     // import Toast from "./components/Toast";
     import plugin from "./plugins/plugin";
+    import XMTabs from "./components/Tabs";
+    import TabsHead from "./components/TabsHead";
+    import TabsBody from "./components/TabsBody";
+    import TabsItem from "./components/TabsItem";
+    import TabsPane from "./components/TabsPane";
 
     Vue.use(plugin)
     export default {
@@ -140,8 +169,13 @@
             }
         },
         components: {
+            TabsPane,
+            TabsBody,
+            TabsHead,
+            TabsItem,
+            XMTabs,
             Button, buttonGroup, myInput, myCol, myRow, Layout, Header
-            , Sider, XMContent, Footer,
+            , Sider, XMContent, Footer,Icon
         },
         created() {
 
