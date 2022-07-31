@@ -28,6 +28,9 @@
         },
 
         created() {
+        },
+        mounted() {
+            this.$bus.$emit('update:selected', this.selected)
         }
     }
 </script>
