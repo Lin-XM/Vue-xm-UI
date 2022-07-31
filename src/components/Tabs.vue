@@ -9,8 +9,7 @@
     export default {
         name: "XM-Tabs",
         data() {
-            return {
-            }
+            return {}
         },
         props: {
             selected: {
@@ -30,7 +29,16 @@
         created() {
         },
         mounted() {
-            this.$bus.$emit('update:selected', this.selected)
+            this.$children.forEach(vm => {
+                if (vm.$options.name === 'TabsHeader') {
+                    vm.$children.forEach(item => {
+                        if(item.$options.name=== 'TabsItem' && item.name === this.selected){
+                            this.$bus.$emit('update:selected',this.selected,item)
+                            console.log('tabsItem',item.$el);
+                        }
+                    })
+                }
+            })
         }
     }
 </script>

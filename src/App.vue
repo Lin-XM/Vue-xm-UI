@@ -2,7 +2,6 @@
     <div id="app">
         <div class="tabsGroup">
             <XMTabs :selected.sync="selectedTab" @update:selected="yyyy" direction="horizontal" >
-<!--                <TabsHead selected="selectedTab" @update:selected="selectedTab = $event">-->
                 <TabsHead >
                     <template slot="actions">
                         <button>设置</button>
@@ -197,7 +196,7 @@
                 })
             },
             yyyy(){
-                console.log('yyy');
+                // console.log('yyy');
             }
         }
 
@@ -289,7 +288,7 @@
     }
 
     #app {
-        margin: 20px;
+        margin: 0  20px;
     }
 
 </style>

@@ -22,7 +22,7 @@
                 active: false
             }
         },
-        created: function () {
+        created() {
             this.$bus.$on('update:selected', (name) => {
                 this.active = name === this.name;
             })
@@ -46,8 +46,14 @@
     .tabsItem {
         flex-shrink: 0;
         padding: 0 2em;
+        cursor:pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        color:black;
         &.active{
-            background-color: skyblue;
+            color: #0073ff;
+            font-weight: bold;
          }
     }
 
