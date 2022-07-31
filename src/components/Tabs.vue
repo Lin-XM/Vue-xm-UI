@@ -9,7 +9,9 @@
     export default {
         name: "XM-Tabs",
         data() {
-            return {}
+            return {
+                selectedTab:''
+            }
         },
         props: {
             selected: {
@@ -27,16 +29,21 @@
         },
 
         created() {
+            this.$bus.$on('update:selected', (name) => {
+                this.selectedTab = name
+
+            })
         },
         mounted() {
-            this.$children.forEach(vm => {
+            if (this.$children.length === 0) {
+                console && console.warn &&
+                console.warn('tabs的子组件应该是tabs-head和tabs-nav，但你没有写子组件')
+            }
+            this.$children.forEach((vm) => {
                 if (vm.$options.name === 'TabsHeader') {
-                    vm.$children.forEach(item => {
-                        if(item.$options.name=== 'TabsItem' && item.name === this.selected){
-                            this.$bus.$emit('update:selected',this.selected,item)
-                            console.log('tabsItem',item.$el);
-                        }
-                    })
+                    // console.log(vm.$children[0]);
+                    // firstVm = vm.$children[0]
+                    // this.$bus.$emit('updated:selected',firstVm)
                 }
             })
         }

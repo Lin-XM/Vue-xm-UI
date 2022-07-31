@@ -1,16 +1,18 @@
 <template>
     <div id="app">
         <div class="tabsGroup">
-            <XMTabs :selected.sync="selectedTab" @update:selected="yyyy" direction="horizontal" >
+
+            <XMTabs :selected.sync="selectedTab" direction="horizontal"  >
+<!--            <XMTabs :selected.="selectedTab" @update:selected="selectedTab = $event"  >-->
                 <TabsHead >
                     <template slot="actions">
                         <button>设置</button>
                     </template>
-                    <TabsItem :disbaled="true" name="woman">
+                    <TabsItem name="woman">
                         <Icon name="setting"></Icon>美女</TabsItem>
                     <TabsItem name="finance">财经</TabsItem>
                     <TabsItem name="sports">体育</TabsItem>
-                    <TabsItem name="movies">影视</TabsItem>
+                    <TabsItem name="movies" disabled>影视</TabsItem>
                 </TabsHead>
                 <TabsBody>
                     <TabsPane name="woman">美女相关资讯</TabsPane>
@@ -177,8 +179,7 @@
             Button, buttonGroup, myInput, myCol, myRow, Layout, Header
             , Sider, XMContent, Footer,Icon
         },
-        created() {
-
+        mounted() {
         },
         methods: {
             showToast() {
@@ -195,9 +196,7 @@
                     position: 'top',
                 })
             },
-            yyyy(){
-                // console.log('yyy');
-            }
+
         }
 
 

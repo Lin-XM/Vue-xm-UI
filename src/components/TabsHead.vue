@@ -1,7 +1,7 @@
 <template>
-    <div class="tabsHeader">
+    <div class="tabsHeader" >
         <slot></slot>
-        <div class="line" ref="line"></div>
+<!--        <div class="line" ref="line"></div>-->
         <div class="actions-wrapper">
             <slot name="actions"></slot>
         </div>
@@ -15,16 +15,6 @@
         data() {
             return {}
         },
-        mounted() {
-            this.$bus.$on('update:selected', (name, item) => {
-                console.log(item.$el)
-                let {width, height, top, left} = item.$el.getBoundingClientRect()
-                console.log(width, height, top, left);
-                this.$refs.line.style.width = `${width}px`
-                this.$refs.line.style.left = `${left}px`
-            })
-
-        }
     }
 </script>
 
