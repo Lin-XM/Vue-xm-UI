@@ -167,7 +167,7 @@
                 status1: true,
                 status2: true,
                 status3: true,
-                selectedTab:'woman'
+                selectedTab:'sports'
             }
         },
         components: {

@@ -1,7 +1,7 @@
 <template>
     <div class="tabsItem" @click="onClick" :class="activeClass" >
         <slot></slot>
-        <div class="line" ref="line" v-if="active" ></div>
+        <div class="line" ref="line" v-if="active"></div>
 
     </div>
 </template>
@@ -17,21 +17,18 @@
             name: {
                 type: [String, Number],
                 require: true,
-                default:"woman"
             }
         },
         data() {
             return {
                 active: false,
-                styleData:0
             }
         },
         created() {
-            this.$bus.$on('update:selected', (name) => {
 
+            this.$bus.$on('update:selected', (name) => {
                 this.active = name === this.name;
-                console.log(this.name);
-                console.log(this.active);
+
             })
         },
         methods: {
