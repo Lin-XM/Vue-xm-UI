@@ -2,7 +2,25 @@
     <div id="app">
 
         <div class="popoverGroup" @click="yyyy">
-            <Popover>
+            <Popover position="top">
+                <template slot="content">
+                    <div>popover 内容dadwadadawda</div>
+                </template>
+                <Button>点我</Button>
+            </Popover>
+            <Popover position="bottom">
+                <template slot="content">
+                    <div>popover 内容dadwadadawda</div>
+                </template>
+                <Button>点我</Button>
+            </Popover>
+            <Popover position="right">
+                <template slot="content">
+                    <div>popover 内容dadwadadawda</div>
+                </template>
+                <Button>点我</Button>
+            </Popover>
+            <Popover position="left">
                 <template slot="content">
                     <div>popover 内容dadwadadawda</div>
                 </template>
