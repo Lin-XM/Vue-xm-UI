@@ -1,7 +1,7 @@
 <template>
     <div class="tabsItem" @click="onClick" :class="activeClass" >
         <slot></slot>
-        <div class="line" ref="line" v-if="active"></div>
+        <div class="line" ref="line" v-show="active"></div>
 
     </div>
 </template>
