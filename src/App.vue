@@ -1,15 +1,14 @@
 <template>
     <div id="app">
 
-        <div class="popoverGroup">
+        <div class="popoverGroup" @click="yyyy">
             <Popover>
                 <template slot="content">
-                    <div>popover 内容</div>
+                    <div>popover 内容dadwadadawda</div>
                 </template>
-                <button>点我</button>
+                <Button>点我</Button>
             </Popover>
         </div>
-
 
         <div class="tabsGroup">
 
@@ -211,7 +210,9 @@
                     position: 'top',
                 })
             },
-
+            yyyy() {
+                console.log('yyy')
+            }
         }
 
 
@@ -245,10 +246,12 @@
         --border-color: #999;
         --border-color-hover: #666;
     }
-    .popoverGroup{
-        padding:100px 100px;
+
+    .popoverGroup {
+        padding: 100px 100px;
         border: 1px solid green;
     }
+
     .buttonClasses {
         margin: 10px 0;
 

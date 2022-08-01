@@ -3,7 +3,7 @@
         <div ref="content" class="content-wrapper" v-if="visible" @click.stop>
             <slot name="content"></slot>
         </div>
-        <span ref="trigger">
+        <span class="button" ref="trigger">
             <slot></slot>
         </span>
     </div>
@@ -26,16 +26,14 @@
                 this.$refs.content.style.left = left + window.scrollX + 'px'
                 this.$refs.content.style.top = top + window.scrollY + 'px'
             },
-            listenToDocument(){
-                this.onClickDocument =(event)=>{
-                        // 判断点击区域为除内容【组件外】的 区域
-                        if (!(this.$refs.popover && this.$refs.popover === event.target || this.$refs.popover.contains(event.target))) {
-                            this.onClose()
-                            document.removeEventListener('click', this.onClickDocument)
-
-                        }
+            listenToDocument() {
+                this.onClickDocument = (event) => {
+                    // 判断点击区域为除内容【组件外】的 区域
+                    if (!(this.$refs.popover && this.$refs.popover === event.target || this.$refs.popover.contains(event.target))) {
+                        this.onClose()
+                        document.removeEventListener('click', this.onClickDocument)
                     }
-                console.log('监听document')
+                }
                 document.addEventListener('click', this.onClickDocument)
             },
 
@@ -49,7 +47,6 @@
             },
             onClose() {
                 this.visible = false
-                console.log('关闭1');
             },
             onclick(event) {
                 // 判断点击的为 按钮
@@ -70,19 +67,48 @@
 
 <style lang="scss">
     .popover {
-        border: 1px solid red;
         display: inline-block;
         vertical-align: top;
         position: relative;
 
+        .button {
+            display: inline-block;
+        }
 
     }
 
     .content-wrapper {
         border: 1px solid #999;
         border-radius: 4px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        /*box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);*/
+        filter:drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+        background-color: white;
         position: absolute;
         transform: translateY(-100%);
+        margin-top: -10px;
+        padding: .5em 1em;
+        max-width: 12em;
+        word-break: break-all;
+        &::before, &::after {
+            content: '';
+            display: block;
+            border: 10px solid transparent;
+
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 10px;
+        }
+
+        &::before {
+            border-top-color: #999999;
+            top: 100%;
+        }
+
+        &::after {
+            border-top-color: white;
+            top: calc(100% - 2px);
+        }
+
     }
 </style>
