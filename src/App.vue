@@ -247,6 +247,7 @@
     }
     .popoverGroup{
         padding:100px 100px;
+        border: 1px solid green;
     }
     .buttonClasses {
         margin: 10px 0;
