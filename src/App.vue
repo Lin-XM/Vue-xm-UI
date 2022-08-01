@@ -1,15 +1,28 @@
 <template>
     <div id="app">
+
+        <div class="popoverGroup">
+            <Popover>
+                <template slot="content">
+                    <div>popover 内容</div>
+                </template>
+                <button>点我</button>
+            </Popover>
+        </div>
+
+
         <div class="tabsGroup">
 
-            <XMTabs :selected.sync="selectedTab" direction="horizontal"  >
-<!--            <XMTabs :selected.="selectedTab" @update:selected="selectedTab = $event"  >-->
-                <TabsHead >
+            <XMTabs :selected.sync="selectedTab" direction="horizontal">
+                <!--            <XMTabs :selected.="selectedTab" @update:selected="selectedTab = $event"  >-->
+                <TabsHead>
                     <template slot="actions">
                         <button>设置</button>
                     </template>
                     <TabsItem name="woman">
-                        <Icon name="setting"></Icon>美女</TabsItem>
+                        <Icon name="setting"></Icon>
+                        美女
+                    </TabsItem>
                     <TabsItem name="finance">财经</TabsItem>
                     <TabsItem name="sports">体育</TabsItem>
                     <TabsItem name="movies" disabled>影视</TabsItem>
@@ -151,13 +164,15 @@
     import Sider from "./components/Sider";
     import XMContent from "./components/Content";
     import Footer from "./components/Footer";
-    // import Toast from "./components/Toast";
     import plugin from "./plugins/plugin";
     import XMTabs from "./components/Tabs";
     import TabsHead from "./components/TabsHead";
     import TabsBody from "./components/TabsBody";
     import TabsItem from "./components/TabsItem";
     import TabsPane from "./components/TabsPane";
+    import Popover from "./components/Popover";
+    // import Toast from "./components/Toast";
+
 
     Vue.use(plugin)
     export default {
@@ -167,7 +182,7 @@
                 status1: true,
                 status2: true,
                 status3: true,
-                selectedTab:'sports'
+                selectedTab: 'sports'
             }
         },
         components: {
@@ -177,7 +192,7 @@
             TabsItem,
             XMTabs,
             Button, buttonGroup, myInput, myCol, myRow, Layout, Header
-            , Sider, XMContent, Footer,Icon
+            , Sider, XMContent, Footer, Icon, Popover
         },
         mounted() {
         },
@@ -230,7 +245,9 @@
         --border-color: #999;
         --border-color-hover: #666;
     }
-
+    .popoverGroup{
+        padding:100px 100px;
+    }
     .buttonClasses {
         margin: 10px 0;
 
@@ -287,7 +304,7 @@
     }
 
     #app {
-        margin: 0  20px;
+        margin: 0 20px;
     }
 
 </style>
