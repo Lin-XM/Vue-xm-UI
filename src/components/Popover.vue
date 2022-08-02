@@ -1,6 +1,6 @@
 <template>
     <div class="popover" @click="onclick" ref="popover">
-        <div ref="content" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:true}">
+        <div ref="content" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:true} " @click.stop>
             <slot name="content"></slot>
         </div>
         <span class="button" ref="trigger">
@@ -32,25 +32,32 @@
                 const contentRef = this.$refs.content
                 const triggerRef = this.$refs.trigger
                 document.body.appendChild(contentRef)
-                let {top, height, left,width} = triggerRef.getBoundingClientRect()
-                //需要加上页面body 到 窗口顶端的距离
-                if (this.position === 'top') {
-                    contentRef.style.left = left + window.scrollX + 'px'
-                    contentRef.style.top = top + window.scrollY + 'px'
-                } else if (this.position === 'bottom') {
-                    contentRef.style.left = left + window.scrollX + 'px'
-                    contentRef.style.top = top + height + window.scrollY + 'px'
-                } else if (this.position === 'right') {
-                    let {height: height2} = contentRef.getBoundingClientRect()
 
-                    contentRef.style.left = left + window.scrollX+ width + 'px'
-                    contentRef.style.top = top + window.scrollY + (height - height2) / 2 + 'px'
-
-                } else if (this.position === 'left') {
-                    let {height: height2} = contentRef.getBoundingClientRect()
-                    contentRef.style.left = left + window.scrollX + 'px'
-                    contentRef.style.top = top + window.scrollY + (height - height2) / 2 + 'px'
+                let {top, height, left, width} = triggerRef.getBoundingClientRect()
+                let {height: height2} = contentRef.getBoundingClientRect()
+                let positions = {
+                    top: {
+                        left: left + window.scrollX,
+                        top: top + window.scrollY
+                    },
+                    bottom: {
+                        left: left + window.scrollX,
+                        top: top + height + window.scrollY
+                    },
+                    left: {
+                        left: left + window.scrollX,
+                        top: top + window.scrollY + (height - height2) / 2
+                    },
+                    right: {
+                        left: left + window.scrollX + width,
+                        top: top + window.scrollY + (height - height2) / 2
+                    },
                 }
+
+
+                //需要加上页面body 到 窗口顶端的距离
+                contentRef.style.left = positions[this.position].left + 'px'
+                contentRef.style.top = positions[this.position].top + 'px'
 
             },
             listenToDocument() {
@@ -166,8 +173,9 @@
         &.position-left {
             transform: translateX(-100%);
             margin-left: -10px;
+
             &::before, &::after {
-                transform:translateY(-50%);
+                transform: translateY(-50%);
                 top: 50%;
             }
 
@@ -182,10 +190,12 @@
 
             }
         }
+
         &.position-right {
-            margin-left:10px;
+            margin-left: 10px;
+
             &::before, &::after {
-                transform:translateY(-50%);
+                transform: translateY(-50%);
                 top: 50%;
             }
 
