@@ -1,5 +1,5 @@
 <template>
-    <div class="popover" @click="onclick" ref="popover">
+    <div class="popover" ref="popover">
         <div ref="content" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:true} " @click.stop>
             <slot name="content"></slot>
         </div>
@@ -15,7 +15,8 @@
         name: "Popover",
         data() {
             return {
-                visible: false
+                visible: false,
+
             }
         },
         props: {
@@ -25,6 +26,45 @@
                 validator(value) {
                     return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
                 }
+            },
+            trigger: {
+                type: String,
+                default: 'click',
+                validator(value) {
+                    return ['click', 'hover'].indexOf(value) >= 0
+                }
+            }
+        },
+        computed: {
+            openEvent() {
+                if (this.trigger === 'click') {
+                    return 'click'
+                } else {
+                    return 'mouseenter'
+                }
+            },
+            closeEvent() {
+                if (this.trigger === 'click') {
+                    return 'click'
+                } else {
+                    return 'mouseleave'
+                }
+            }
+        },
+        mounted() {
+            if (this.trigger === 'click') {
+                this.$refs.popover.addEventListener('click', this.onClick)
+            } else {
+                this.$refs.popover.addEventListener('mouseenter', this.onOpen)
+                this.$refs.popover.addEventListener('mouseleave', this.onClose)
+            }
+        },
+        destroyed() {
+            if (this.trigger === 'click') {
+                this.$refs.popover.removeEventListener('click', this.onClick)
+            } else {
+                this.$refs.popover.removeEventListener('mouseenter', this.onOpen)
+                this.$refs.popover.removeEventListener('mouseleave', this.onClose)
             }
         },
         methods: {
@@ -82,7 +122,7 @@
             onClose() {
                 this.visible = false
             },
-            onclick(event) {
+            onClick(event) {
                 // 判断点击的为 按钮
                 if (this.$refs.trigger.contains(event.target)) {
                     if (this.visible === true) {
@@ -94,8 +134,7 @@
                 }
             }
         },
-        mounted() {
-        }
+
     }
 </script>
 

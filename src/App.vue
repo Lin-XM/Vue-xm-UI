@@ -2,30 +2,59 @@
     <div id="app">
 
         <div class="popoverGroup" @click="yyyy">
-            <Popover position="top">
-                <template slot="content">
-                    <div>popover 内容dadwadadawda</div>
-                </template>
-                <Button>点我</Button>
-            </Popover>
-            <Popover position="bottom">
-                <template slot="content">
-                    <div>popover 内容dadwadadawda</div>
-                </template>
-                <Button>点我</Button>
-            </Popover>
-            <Popover position="right">
-                <template slot="content">
-                    <div>popover 内容dadwadadawda</div>
-                </template>
-                <Button>点我</Button>
-            </Popover>
-            <Popover position="left">
-                <template slot="content">
-                    <div>popover 内容dadwadadawda</div>
-                </template>
-                <Button>点我</Button>
-            </Popover>
+            <div style="margin:10px 10px;">
+                <Popover position="top">
+                    <template slot="content">
+                        <div>popover 内容dadwadadawda</div>
+                    </template>
+                    <Button>点我</Button>
+                </Popover>
+                <Popover position="bottom">
+                    <template slot="content">
+                        <div>popover 内容dadwadadawda</div>
+                    </template>
+                    <Button>点我</Button>
+                </Popover>
+                <Popover position="right">
+                    <template slot="content">
+                        <div>popover 内容dadwadadawda</div>
+                    </template>
+                    <Button>点我</Button>
+                </Popover>
+                <Popover position="left">
+                    <template slot="content">
+                        <div>popover 内容dadwadadawda</div>
+                    </template>
+                    <Button>点我</Button>
+                </Popover>
+            </div>
+            <div style="margin:10px 10px;">
+                <Popover position="top"  trigger="hover">
+                    <template slot="content">
+                        <div>popover 内容dadwadadawda</div>
+                    </template>
+                    <Button>点我</Button>
+                </Popover>
+                <Popover position="bottom" trigger="hover">
+                    <template slot="content">
+                        <div>popover 内容dadwadadawda</div>
+                    </template>
+                    <Button>点我</Button>
+                </Popover>
+                <Popover position="right" trigger="hover">
+                    <template slot="content">
+                        <div>popover 内容dadwadadawda</div>
+                    </template>
+                    <Button>点我</Button>
+                </Popover>
+                <Popover position="left" trigger="hover">
+                    <template slot="content">
+                        <div>popover 内容dadwadadawda</div>
+                    </template>
+                    <Button>点我</Button>
+                </Popover>
+            </div>
+
         </div>
 
         <div class="tabsGroup">
