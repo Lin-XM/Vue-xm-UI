@@ -1,7 +1,7 @@
 <template>
     <div class="popover" ref="popover">
         <div ref="content" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:true} " @click.stop>
-            <slot name="content"></slot>
+            <slot name="content" :close="onClose"></slot>
         </div>
         <span class="button" ref="trigger">
             <slot></slot>
@@ -33,7 +33,7 @@
                 validator(value) {
                     return ['click', 'hover'].indexOf(value) >= 0
                 }
-            }
+            },
         },
         computed: {
             openEvent() {
@@ -181,6 +181,7 @@
             }
 
             &::before {
+                border-top: none;
                 border-top-color: #999999;
                 top: 100%;
             }
@@ -199,6 +200,7 @@
             }
 
             &::before {
+                border-top: none;
                 border-bottom-color: #999999;
                 bottom: 100%;
             }
@@ -219,6 +221,8 @@
             }
 
             &::before {
+                border-left: none;
+
                 border-left-color: #999999;
                 left: 100%;
             }
@@ -239,6 +243,7 @@
             }
 
             &::before {
+                border-right: none;
                 border-right-color: #999999;
                 right: 100%;
             }

@@ -4,54 +4,55 @@
         <div class="popoverGroup" @click="yyyy">
             <div style="margin:10px 10px;">
                 <Popover position="top">
-                    <template slot="content">
-                        <div>popover 内容dadwadadawda</div>
+                    <template slot="content" slot-scope="{close}">
+                        <div>popover 内容，方位上，点击按钮关闭，支持html
+                        <Button @click="close">关闭</Button></div>
                     </template>
-                    <Button>点我</Button>
+                    <Button>点击</Button>
                 </Popover>
                 <Popover position="bottom">
                     <template slot="content">
-                        <div>popover 内容dadwadadawda</div>
+                        <div>popover 内容，方位下, <a href="https://baidu.com">百度一下</a>。 </div>
                     </template>
-                    <Button>点我</Button>
+                    <Button>点击</Button>
                 </Popover>
                 <Popover position="right">
                     <template slot="content">
-                        <div>popover 内容dadwadadawda</div>
+                        <div>popover 内容，方位右</div>
                     </template>
-                    <Button>点我</Button>
+                    <Button>点击</Button>
                 </Popover>
                 <Popover position="left">
                     <template slot="content">
-                        <div>popover 内容dadwadadawda</div>
+                        <div>popover 内容，方位左</div>
                     </template>
-                    <Button>点我</Button>
+                    <Button>点击</Button>
                 </Popover>
             </div>
             <div style="margin:10px 10px;">
                 <Popover position="top"  trigger="hover">
                     <template slot="content">
-                        <div>popover 内容dadwadadawda</div>
+                        <div>popover 内容，方位上</div>
                     </template>
-                    <Button>点我</Button>
+                    <Button>悬浮</Button>
                 </Popover>
                 <Popover position="bottom" trigger="hover">
                     <template slot="content">
-                        <div>popover 内容dadwadadawda</div>
+                        <div>popover 内容，方位下</div>
                     </template>
-                    <Button>点我</Button>
+                    <Button>悬浮</Button>
                 </Popover>
                 <Popover position="right" trigger="hover">
                     <template slot="content">
-                        <div>popover 内容dadwadadawda</div>
+                        <div>popover 内容，方位右</div>
                     </template>
-                    <Button>点我</Button>
+                    <Button>悬浮</Button>
                 </Popover>
                 <Popover position="left" trigger="hover">
                     <template slot="content">
-                        <div>popover 内容dadwadadawda</div>
+                        <div>popover 内容，方位左</div>
                     </template>
-                    <Button>点我</Button>
+                    <Button>悬浮</Button>
                 </Popover>
             </div>
 
