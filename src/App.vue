@@ -1,5 +1,13 @@
 <template>
     <div id="app">
+        <div class="collapseGroup">
+            <h2>我是 collapse</h2>
+            <Collapse>
+                <CollapseItem title="标题1">内容1</CollapseItem>
+                <CollapseItem title="标题2">内容2</CollapseItem>
+                <CollapseItem title="标题3">内容3</CollapseItem>
+            </Collapse>
+        </div>
 
         <div class="popoverGroup" @click="yyyy">
             <div style="margin:10px 10px;">
@@ -218,6 +226,8 @@
     import TabsItem from "./components/TabsItem";
     import TabsPane from "./components/TabsPane";
     import Popover from "./components/Popover";
+    import Collapse from "./components/Collapse";
+    import CollapseItem from "./components/CollapseItem";
     // import Toast from "./components/Toast";
 
 
@@ -238,6 +248,8 @@
             TabsHead,
             TabsItem,
             XMTabs,
+            Collapse,
+            CollapseItem,
             Button, buttonGroup, myInput, myCol, myRow, Layout, Header
             , Sider, XMContent, Footer, Icon, Popover
         },
@@ -294,9 +306,11 @@
         --border-color: #999;
         --border-color-hover: #666;
     }
-
+    .collapseGroup{
+        margin: 10px 0 ;
+    }
     .popoverGroup {
-        padding: 100px 100px;
+        padding: 30px 100px;
         border: 1px solid green;
     }
 
