@@ -1,8 +1,8 @@
 <template>
     <div id="app">
         <div class="collapseGroup">
-            <h2>我是 collapse</h2>
-            <Collapse selected="2"  >
+            <h2>我是 collapse，初始选中{{selected}}</h2>
+            <Collapse :selected.sync="selected" single >
                 <CollapseItem title="标题1" nameId="1" >内容1</CollapseItem>
                 <CollapseItem title="标题2" nameId="2" >内容2</CollapseItem>
                 <CollapseItem title="标题3" nameId="3" >内容3</CollapseItem>
@@ -239,7 +239,8 @@
                 status1: true,
                 status2: true,
                 status3: true,
-                selectedTab: 'sports'
+                selectedTab: 'sports',
+                selected:"2"
             }
         },
         components: {

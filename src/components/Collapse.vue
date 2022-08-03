@@ -19,6 +19,9 @@
         mounted() {
             this.$bus.$emit('isSingle',this.single)
             this.$bus.$emit('update:selected',this.selected)
+            this.$bus.$on('update:selected',(nameId)=>{
+                this.$emit('update:selected',nameId)
+            })
         }
 
     }
