@@ -11,11 +11,14 @@
             single:{
                 type:Boolean,
                 default:false
+            },
+            selected:{
+                type: String,
             }
         },
         mounted() {
-            console.log('collapse:',this.single);
             this.$bus.$emit('isSingle',this.single)
+            this.$bus.$emit('update:selected',this.selected)
         }
 
     }

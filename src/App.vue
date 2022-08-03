@@ -2,10 +2,10 @@
     <div id="app">
         <div class="collapseGroup">
             <h2>我是 collapse</h2>
-            <Collapse  >
-                <CollapseItem title="标题1">内容1</CollapseItem>
-                <CollapseItem title="标题2">内容2</CollapseItem>
-                <CollapseItem title="标题3">内容3</CollapseItem>
+            <Collapse selected="2"  >
+                <CollapseItem title="标题1" nameId="1" >内容1</CollapseItem>
+                <CollapseItem title="标题2" nameId="2" >内容2</CollapseItem>
+                <CollapseItem title="标题3" nameId="3" >内容3</CollapseItem>
             </Collapse>
         </div>
 

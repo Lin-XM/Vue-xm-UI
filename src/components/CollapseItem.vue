@@ -29,14 +29,20 @@
                 required: true,
                 default: '标题'
             },
+            nameId:{
+                type:String,
+                required:true
+            }
 
         },
         mounted() {
             this.$bus.$on('isSingle', (isSingle) => {
-                this.$bus.$on('update:selected', (vm) => {
-                    if (isSingle && vm !== this) {
+                this.$bus.$on('update:selected', (name) => {
+                    if (isSingle && name !== this.nameId) {
                         this.close()
 
+                    }else if(name ===  this.nameId){
+                        this.onOpen()
                     }
                 })
             })
@@ -46,12 +52,14 @@
                 if (this.open) {
                     this.open = false
                 } else {
-                    this.open = true
-                    this.$bus.$emit('update:selected', this)
+                    this.$bus.$emit('update:selected', this.nameId)
                 }
             },
             close() {
                 this.open = false
+            },
+            onOpen(){
+                this.open= true
             }
         }
     }
