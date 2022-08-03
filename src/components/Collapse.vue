@@ -6,14 +6,24 @@
 
 <script>
     export default {
-        name: "Collapse"
+        name: "Collapse",
+        props:{
+            single:{
+                type:Boolean,
+                default:false
+            }
+        },
+        mounted() {
+            console.log('collapse:',this.single);
+            this.$bus.$emit('isSingle',this.single)
+        }
+
     }
 </script>
 
 <style scoped lang="scss">
     .collapse{
-        /*border: 1px solid #999;*/
-        /*border-radius: 4px;*/
+
     }
 
 </style>

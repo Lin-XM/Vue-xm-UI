@@ -1,7 +1,7 @@
 <template>
-    <div class="collapseItem" >
-        <div class="title" @click="open=!open">
-            <Icon name="plus" />
+    <div class="collapseItem">
+        <div class="title" @click="trigger">
+            <Icon name="plus"/>
             {{title}}
         </div>
         <div class="content" v-if="open">
@@ -15,12 +15,12 @@
 
     export default {
         name: "CollapseItem",
-        components:{
+        components: {
             Icon
         },
-        data(){
+        data() {
             return {
-                open:false
+                open: false
             }
         },
         props: {
@@ -28,6 +28,30 @@
                 type: String,
                 required: true,
                 default: '标题'
+            },
+
+        },
+        mounted() {
+            this.$bus.$on('isSingle', (isSingle) => {
+                this.$bus.$on('update:selected', (vm) => {
+                    if (isSingle && vm !== this) {
+                        this.close()
+
+                    }
+                })
+            })
+        },
+        methods: {
+            trigger() {
+                if (this.open) {
+                    this.open = false
+                } else {
+                    this.open = true
+                    this.$bus.$emit('update:selected', this)
+                }
+            },
+            close() {
+                this.open = false
             }
         }
     }
@@ -62,14 +86,11 @@
         }
 
         &:last-child {
-
-            > .content{
-                border-bottom:1px solid grey;
+            > .content {
+                border-bottom: 1px solid grey;
                 border-bottom-left-radius: 4px;
                 border-bottom-right-radius: 4px;
             }
         }
-
-
     }
 </style>

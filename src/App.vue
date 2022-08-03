@@ -2,7 +2,7 @@
     <div id="app">
         <div class="collapseGroup">
             <h2>我是 collapse</h2>
-            <Collapse>
+            <Collapse  >
                 <CollapseItem title="标题1">内容1</CollapseItem>
                 <CollapseItem title="标题2">内容2</CollapseItem>
                 <CollapseItem title="标题3">内容3</CollapseItem>
