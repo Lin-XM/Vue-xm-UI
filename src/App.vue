@@ -2,6 +2,7 @@
     <div id="app">
         <div class="collapseGroup">
             <h2>我是 collapse，初始选中{{selected}}</h2>
+            <span>参数[single] 决定是否只能展开一个，[selected] 决定初始状态是否展开</span>
             <Collapse :selected.sync="selected" single >
                 <CollapseItem title="标题1" nameId="1" >内容1</CollapseItem>
                 <CollapseItem title="标题2" nameId="2" >内容2</CollapseItem>
@@ -240,7 +241,7 @@
                 status2: true,
                 status3: true,
                 selectedTab: 'sports',
-                selected:"2"
+                selected:["2","1"]
             }
         },
         components: {

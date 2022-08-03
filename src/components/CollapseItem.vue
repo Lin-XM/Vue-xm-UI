@@ -1,12 +1,15 @@
 <template>
     <div class="collapseItem">
         <div class="title" @click="trigger">
-            <Icon name="plus"/>
+            <Icon :name="open ? `plus` : `minus`"/>
             {{title}}
         </div>
-        <div class="content" v-if="open">
-            <slot></slot>
-        </div>
+        <transition name="bounce">
+            <div class="content" v-if="open">
+                <slot></slot>
+            </div>
+        </transition>
+
     </div>
 </template>
 
@@ -36,38 +39,42 @@
 
         },
         mounted() {
-            this.$bus.$on('isSingle', (isSingle) => {
-                this.$bus.$on('update:selected', (name) => {
-                    if (isSingle && name !== this.nameId) {
-                        this.close()
-
-                    }else if(name ===  this.nameId){
-                        this.onOpen()
-                    }
+                this.$bus.$on('update:selected', (names) => {
+                    this.open = names.indexOf(this.nameId) >= 0;
                 })
-            })
         },
         methods: {
             trigger() {
                 if (this.open) {
-                    this.open = false
+                    this.$bus.$emit('update:removeSelected', this.nameId)
+
                 } else {
-                    this.$bus.$emit('update:selected', this.nameId)
+                    this.$bus.$emit('update:addSelected', this.nameId)
                 }
             },
-            close() {
-                this.open = false
-            },
-            onOpen(){
-                this.open= true
-            }
         }
     }
 </script>
 
 <style scoped lang="scss">
+
     .collapseItem {
 
+        .bounce-enter-active {
+            animation:  .5s linear;
+        }
+        .bounce-leave-active {
+            animation:  .2s linear ;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
         > .title {
             border: 1px solid grey;
             display: flex;

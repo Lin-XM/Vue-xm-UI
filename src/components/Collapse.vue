@@ -13,14 +13,33 @@
                 default:false
             },
             selected:{
-                type: String,
+                type: Array,
+            },
+        },
+        data(){
+            return {
             }
         },
         mounted() {
-            this.$bus.$emit('isSingle',this.single)
+            let selectedCopy = JSON.parse(JSON.stringify(this.selected))
+
             this.$bus.$emit('update:selected',this.selected)
-            this.$bus.$on('update:selected',(nameId)=>{
-                this.$emit('update:selected',nameId)
+            this.$bus.$on('update:addSelected',(nameId)=>{
+                if(this.single){
+                    selectedCopy = [nameId]
+                }else{
+                    selectedCopy.push(nameId)
+                }
+                this.$emit('update:selected',selectedCopy)
+                this.$bus.$emit('update:selected',selectedCopy)
+
+            })
+            this.$bus.$on('update:removeSelected',(nameId)=>{
+                let index = selectedCopy.indexOf(nameId)
+                selectedCopy.splice(index,1)
+                this.$emit('update:selected',selectedCopy)
+                this.$bus.$emit('update:selected',selectedCopy)
+
             })
         }
 
